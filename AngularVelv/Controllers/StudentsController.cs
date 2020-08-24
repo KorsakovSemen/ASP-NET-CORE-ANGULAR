@@ -21,15 +21,9 @@ namespace AngularVelv.Controllers
 
         // GET: api/Students
         [HttpGet]
-        public ActionResult<IEnumerable<Student>> GetStudents()
+        public async Task<ActionResult<IEnumerable<Student>>> GetStudents()
         {
-            List<Student> students = new List<Student>()
-            {
-                new Student(){ID = 0, Gender = Gender.M, FirstName = "T", MiddleName = "T", LastName = "T", NickName = "T", StudentGroups = { } }
-            };
-
-            //return await _context.students.ToListAsync();
-            return students;
+            return await _context.Students.ToListAsync();
         }
 
         // GET: api/Students/5
