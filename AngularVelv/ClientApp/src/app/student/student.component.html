@@ -1,0 +1,53 @@
+<h1 id="tableLabel">Students</h1>
+
+
+<p *ngIf="!Students"><em>Loading...</em></p>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="Students; else create">
+  <thead>
+    <tr>
+      <th>First name</th>
+      <th>Middle name</th>
+      <th>Last name</th>
+      <th>Full name</th>
+      <th>Nickname</th>
+      <th>Gender</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let student of Students">
+      <td>{{ student.firstName }}</td>
+      <td>{{ student.middleName }}</td>
+      <td>{{ student.lastName }}</td>
+      <td>{{ student.fullName }}</td>
+      <td>{{ student.Nickname }}</td>
+      <td>{{ student.Gender }}</td>
+      <td>
+        <button class="btn btn-sm btn-danger" (click)="delete(student)">Удалить</button>
+        <button class="btn btn-sm btn-warning" (click)="edit(student)">Edit</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+<!--шаблон для добавления-->
+<!--<ng-template #create>-->
+<div class="form-group">
+  <label>First name</label>
+  <input type="text" [(ngModel)]="student.firstName" class="form-control" />
+  <label>Middle name</label>
+  <input type="text" [(ngModel)]="student.middleName" class="form-control" />
+  <label>Last name</label>
+  <input type="text" [(ngModel)]="student.lastName" class="form-control" />
+  <label>Gender (F or M)</label>
+  <input type="text" [(ngModel)]="student.gender" class="form-control" />
+  <label>Nickname</label>
+  <input type="text" [(ngModel)]="student.nickName" class="form-control" />
+</div>
+
+<div>
+  <input type="button" value="Сохранить" (click)="save()" class="btn btn-success" />
+  <input type="button" value="Отмена" (click)="cancel()" class="btn btn-warning" />
+</div>
+<!--</ng-template>-->

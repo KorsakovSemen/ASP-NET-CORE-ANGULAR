@@ -17,7 +17,10 @@ namespace VelvAPI.Models
         {
             get
             {
-                return LastName + " " + MiddleName + " " + FirstName + "'" + NickName + "'";
+                if (NickName != null || NickName != "")
+                    return LastName + " " + MiddleName + " " + FirstName + "'" + NickName + "'";
+                else
+                    return LastName + " " + MiddleName + " " + FirstName;
             }
         }
 
