@@ -1,5 +1,6 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { StudentService } from '../services/student/student.service';
+import { Student } from './student';
 
 @Component({
   selector: 'app-student',
@@ -11,7 +12,6 @@ export class StudentComponent implements OnInit {
 
   student: Student = new Student();
   public Students: Student[];
-  //readonly rootURL = getBaseUrl() + 'api/Students';
 
   constructor(private studentService: StudentService) {
     //http.get<Student[]>(baseUrl + 'api/Students').subscribe(result => {
@@ -53,21 +53,7 @@ export class StudentComponent implements OnInit {
 
 }
 
-enum Gender {
-  M, F
-}
 
-export class Student {
-  id: number;
-  gender: Gender;
-  middleName: string;
-  firstName: string;
-  lastName: string;
-  nickName?: string;
-  fullName: string;
-  studentGroups: StudentGroup;
-}
-
-interface StudentGroup {
+export class StudentGroup {
 }
 

@@ -1,20 +1,28 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using AngularVelv.Models;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace VelvAPI.Models
 {
     public enum Gender
     {
-        M, F
+        M = 0,
+        F = 1
     }
 
     public abstract class Person 
     {
         [Required]
-        public long ID { get; set; }      
+        public long ID { get; set; }
 
-        [Required]
-        [Display(Name = "Gender")]
+        [Column("Gender")]
+        public string GenderString
+        {
+            get { return Gender.ToString(); }
+            private set { Gender = value.ParseEnum<Gender>(); }
+        }
+
+        [NotMapped]
         public Gender Gender { get; set; }
 
         [Required]

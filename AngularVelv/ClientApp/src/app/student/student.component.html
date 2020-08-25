@@ -20,11 +20,12 @@
       <td>{{ student.middleName }}</td>
       <td>{{ student.lastName }}</td>
       <td>{{ student.fullName }}</td>
-      <td>{{ student.Nickname }}</td>
-      <td>{{ student.Gender }}</td>
+      <td>{{ student.nickName }}</td>
+      <td>{{ student.gender }}</td>
       <td>
         <button class="btn btn-sm btn-danger" (click)="delete(student)">Удалить</button>
         <button class="btn btn-sm btn-warning" (click)="edit(student)">Edit</button>
+        <button class="btn btn-sm btn-warning" (click)="edit(student)">Choose group</button>
       </td>
     </tr>
   </tbody>
@@ -41,7 +42,10 @@
   <label>Last name</label>
   <input type="text" [(ngModel)]="student.lastName" class="form-control" />
   <label>Gender (F or M)</label>
-  <input type="text" [(ngModel)]="student.gender" class="form-control" />
+  <select [ngModel]="student.gender">
+    <option value="{{ Gender.M }}">Extra Large</option>
+    <option value="{{ Gender.F }}">Large</option>
+  </select>
   <label>Nickname</label>
   <input type="text" [(ngModel)]="student.nickName" class="form-control" />
 </div>

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Student } from '../../student/student.component';
 import { HttpClient } from '@angular/common/http';
+import { Student, Gender } from '../../student/student';
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +22,10 @@ export class StudentService {
   }
 
   createStudent(student: Student) {
+    if (student.gender == Gender.F)
+      student.gender = 1;
+    else if (student.gender == Gender.M)
+      student.gender = 0      
     return this.http.post(this.url, student);
   }
   updateStudent(student: Student) {
