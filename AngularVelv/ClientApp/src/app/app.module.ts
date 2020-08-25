@@ -9,6 +9,7 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
 import { StudentComponent } from './student/student.component';
 import { GroupComponent } from './group/group.component';
+import { StudentEditComponent } from './student-edit/student-edit.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { GroupComponent } from './group/group.component';
     NavMenuComponent,
     HomeComponent,
     StudentComponent,
-    GroupComponent
+    GroupComponent,
+    StudentEditComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -25,6 +27,7 @@ import { GroupComponent } from './group/group.component';
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'students', component: StudentComponent },
+      { path: 'students/edit/:id', component: StudentEditComponent },
     ])
   ],
   providers: [],

@@ -12,48 +12,48 @@ namespace AngularVelv.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class StudentsController : ControllerBase
+    public class GroupsController : ControllerBase
     {
         private readonly CollegeContext _context;
 
-        public StudentsController(CollegeContext context)
+        public GroupsController(CollegeContext context)
         {
             _context = context;
         }
 
-        // GET: api/Students
+        // GET: api/Groups
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Student>>> GetStudents()
+        public async Task<ActionResult<IEnumerable<Group>>> GetGroups()
         {
-            return await _context.Students.ToListAsync();
+            return await _context.Groups.ToListAsync();
         }
 
-        // GET: api/Students/5
+        // GET: api/Groups/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Student>> GetStudent(long id)
+        public async Task<ActionResult<Group>> GetGroup(long id)
         {
-            var student = await _context.Students.FindAsync(id);
+            var @group = await _context.Groups.FindAsync(id);
 
-            if (student == null)
+            if (@group == null)
             {
                 return NotFound();
             }
 
-            return student;
+            return @group;
         }
 
-        // PUT: api/Students/5
+        // PUT: api/Groups/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutStudent(long id, Student student)
+        public async Task<IActionResult> PutGroup(long id, Group @group)
         {
-            if (id != student.ID)
+            if (id != @group.ID)
             {
                 return BadRequest();
             }
 
-            _context.Entry(student).State = EntityState.Modified;
+            _context.Entry(@group).State = EntityState.Modified;
 
             try
             {
@@ -61,7 +61,7 @@ namespace AngularVelv.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!StudentExists(id))
+                if (!GroupExists(id))
                 {
                     return NotFound();
                 }
@@ -74,37 +74,37 @@ namespace AngularVelv.Controllers
             return NoContent();
         }
 
-        // POST: api/Students
+        // POST: api/Groups
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<Student>> PostStudent(Student student)
+        public async Task<ActionResult<Group>> PostGroup(Group @group)
         {
-            _context.Students.Add(student);
+            _context.Groups.Add(@group);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetStudent", new { id = student.ID }, student);
+            return CreatedAtAction("GetGroup", new { id = @group.ID }, @group);
         }
 
-        // DELETE: api/Students/5
+        // DELETE: api/Groups/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Student>> DeleteStudent(long id)
+        public async Task<ActionResult<Group>> DeleteGroup(long id)
         {
-            var student = await _context.Students.FindAsync(id);
-            if (student == null)
+            var @group = await _context.Groups.FindAsync(id);
+            if (@group == null)
             {
                 return NotFound();
             }
 
-            _context.Students.Remove(student);
+            _context.Groups.Remove(@group);
             await _context.SaveChangesAsync();
 
-            return student;
+            return @group;
         }
 
-        private bool StudentExists(long id)
+        private bool GroupExists(long id)
         {
-            return _context.Students.Any(e => e.ID == id);
+            return _context.Groups.Any(e => e.ID == id);
         }
     }
 }

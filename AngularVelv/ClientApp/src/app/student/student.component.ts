@@ -12,11 +12,10 @@ export class StudentComponent implements OnInit {
 
   student: Student = new Student();
   public Students: Student[];
+  tableMode: boolean = true; 
 
   constructor(private studentService: StudentService) {
-    //http.get<Student[]>(baseUrl + 'api/Students').subscribe(result => {
-    //  this.Students = result;
-    //}, error => console.error(error));
+
   }
   ngOnInit(): void {
     this.load();
@@ -35,12 +34,12 @@ export class StudentComponent implements OnInit {
     }
     this.cancel();
   }
-  editProduct(p: Student) {
-    this.student = p;
+  editProduct(s: Student) {
+    this.student = s;
   }
   cancel() {
     this.student = new Student();
-    //this.tableMode = true;
+    this.tableMode = true;
   }
   delete(s: Student) {
     this.studentService.deleteStudent(s.id)
@@ -48,7 +47,7 @@ export class StudentComponent implements OnInit {
   }
   add() {
     this.cancel();
-    //this.tableMode = false;
+    this.tableMode = false;
   }
 
 }

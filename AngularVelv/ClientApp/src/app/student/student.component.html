@@ -3,7 +3,9 @@
 
 <p *ngIf="!Students"><em>Loading...</em></p>
 
-<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="Students; else create">
+<input type="button" value="Добавить" class="btn btn-default" (click)="add()" />
+
+<table *ngIf="tableMode; else create" class='table table-striped' aria-labelledby="tableLabel">
   <thead>
     <tr>
       <th>First name</th>
@@ -15,25 +17,47 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let student of Students">
-      <td>{{ student.firstName }}</td>
-      <td>{{ student.middleName }}</td>
-      <td>{{ student.lastName }}</td>
-      <td>{{ student.fullName }}</td>
-      <td>{{ student.nickName }}</td>
-      <td>{{ student.gender }}</td>
-      <td>
-        <button class="btn btn-sm btn-danger" (click)="delete(student)">Удалить</button>
-        <button class="btn btn-sm btn-warning" (click)="edit(student)">Edit</button>
-        <button class="btn btn-sm btn-warning" (click)="edit(student)">Choose group</button>
-      </td>
+    <tr *ngFor="let s of Students">
+      <ng-template [ngIf]="student?.id != s.id" [ngIfElse]="edit">
+        <td>{{ s.firstName }}</td>
+        <td>{{ s.middleName }}</td>
+        <td>{{ s.lastName }}</td>
+        <td>{{ s.nickName }}</td>
+        <td>{{ s.gender }}</td>
+        <td>
+          <button class="btn btn-sm btn-danger" (click)="delete(s)">Удалить</button>
+          <button class="btn btn-sm btn-warning" (click)="editProduct(s)">Edit</button>
+          <button class="btn btn-sm btn-warning" (click)="edit(s)">Choose group</button>
+        </td>
+      </ng-template>
     </tr>
   </tbody>
 </table>
 
+<ng-template #edit>
+  <td>
+    <input type="text" [(ngModel)]="student.firstName" class="form-control" />
+  </td>
+  <td>
+    <input type="text" [(ngModel)]="student.middleName" class="form-control" />
+  </td>
+  <td>
+    <input type="text" [(ngModel)]="student.lastName" class="form-control" />
+  </td>
+  <td>
+      <input type="text" [(ngModel)]="student.gender" class="form-control" />
+  </td>
+  <td>
+    <input type="text" [(ngModel)]="student.nickName" class="form-control" />
+  </td>
+  <td>
+    <input type="button" value="Сохранить" (click)="save()" class="btn btn-sm btn-success" />
+    <input type="button" value="Отмена" (click)="cancel()" class="btn btn-sm btn-warning" />
+  </td>
+</ng-template>
 
 <!--шаблон для добавления-->
-<!--<ng-template #create>-->
+<ng-template #create>
 <div class="form-group">
   <label>First name</label>
   <input type="text" [(ngModel)]="student.firstName" class="form-control" />
@@ -42,10 +66,7 @@
   <label>Last name</label>
   <input type="text" [(ngModel)]="student.lastName" class="form-control" />
   <label>Gender (F or M)</label>
-  <select [ngModel]="student.gender">
-    <option value="{{ Gender.M }}">Extra Large</option>
-    <option value="{{ Gender.F }}">Large</option>
-  </select>
+  <input type="text" [(ngModel)]="student.gender" class="form-control" />
   <label>Nickname</label>
   <input type="text" [(ngModel)]="student.nickName" class="form-control" />
 </div>
@@ -54,4 +75,4 @@
   <input type="button" value="Сохранить" (click)="save()" class="btn btn-success" />
   <input type="button" value="Отмена" (click)="cancel()" class="btn btn-warning" />
 </div>
-<!--</ng-template>-->
+</ng-template>

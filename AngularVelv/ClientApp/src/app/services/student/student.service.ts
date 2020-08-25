@@ -22,10 +22,6 @@ export class StudentService {
   }
 
   createStudent(student: Student) {
-    if (student.gender == Gender.F)
-      student.gender = 1;
-    else if (student.gender == Gender.M)
-      student.gender = 0      
     return this.http.post(this.url, student);
   }
   updateStudent(student: Student) {

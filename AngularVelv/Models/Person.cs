@@ -6,8 +6,8 @@ namespace VelvAPI.Models
 {
     public enum Gender
     {
-        M = 0,
-        F = 1
+        M,
+        F
     }
 
     public abstract class Person 
@@ -41,13 +41,5 @@ namespace VelvAPI.Models
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
 
-        [Display(Name = "Full Name")]
-        public virtual string FullName
-        {
-            get
-            {
-                return LastName + " " + MiddleName + " " + FirstName;
-            }
-        }
     }
 }

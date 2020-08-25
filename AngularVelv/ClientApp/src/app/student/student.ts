@@ -11,7 +11,6 @@ export class Student {
   middleName: string;
   firstName: string;
   lastName: string;
-  nickName: string;
-  fullName: string;
+  nickName?: string;
   studentGroups: StudentGroup;
 }

@@ -13,17 +13,6 @@ namespace VelvAPI.Models
         [StringLength(16, MinimumLength = 6, ErrorMessage = "Nickname cannot be longer than 40 characters and cannot be smaller than 6.")]
         public string NickName { get; set; }
 
-        public override string FullName 
-        {
-            get
-            {
-                if (NickName != null || NickName != "")
-                    return LastName + " " + MiddleName + " " + FirstName + "'" + NickName + "'";
-                else
-                    return LastName + " " + MiddleName + " " + FirstName;
-            }
-        }
-
         public ICollection<StudentGroup> StudentGroups { get; set; }
 
     }
