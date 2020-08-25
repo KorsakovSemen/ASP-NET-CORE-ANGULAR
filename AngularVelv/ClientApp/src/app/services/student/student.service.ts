@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Student, Gender } from '../../student/student';
+import { Student } from '../../student/student';
 
 @Injectable({
   providedIn: 'root'
@@ -24,9 +24,8 @@ export class StudentService {
   createStudent(student: Student) {
     return this.http.post(this.url, student);
   }
-  updateStudent(student: Student) {
-
-    return this.http.put(this.url, student);
+  updateStudent(id: number, student: Student) {
+    return this.http.put(this.url + '/' + id, student);
   }
   deleteStudent(id: number) {
     return this.http.delete(this.url + '/' + id);

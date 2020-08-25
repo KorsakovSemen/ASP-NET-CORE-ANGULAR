@@ -29,12 +29,12 @@ export class StudentComponent implements OnInit {
       this.studentService.createStudent(this.student)
         .subscribe((data: Student) => this.Students.push(data));
     } else {
-      this.studentService.updateStudent(this.student)
+      this.studentService.updateStudent(this.student.id, this.student)
         .subscribe(data => this.load());
     }
     this.cancel();
   }
-  editProduct(s: Student) {
+  editStudent(s: Student) {
     this.student = s;
   }
   cancel() {
@@ -50,9 +50,5 @@ export class StudentComponent implements OnInit {
     this.tableMode = false;
   }
 
-}
-
-
-export class StudentGroup {
 }
 

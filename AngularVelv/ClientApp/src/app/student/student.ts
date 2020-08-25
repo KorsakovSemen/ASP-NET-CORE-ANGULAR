@@ -1,4 +1,5 @@
-import { StudentGroup } from "./student.component";
+import { StudentGroup } from "../student-group/student-group";
+
 
 export enum Gender {
   M = 'M',
