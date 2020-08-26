@@ -1,6 +1,5 @@
 import { StudentGroup } from "../student-group/student-group";
 
-
 export enum Gender {
   M = 0,
   F = 1

@@ -25,12 +25,13 @@ namespace AngularVelv.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Group>>> GetGroups()
         {
-            //var groups = _context.Groups
-            //  .Include(g => g.StudentGroups)
-            //  .AsNoTracking();
+            var groups = _context.Groups
+              .Include(g => g.StudentGroups)
+                .ThenInclude(sg => sg.Student)
+              .AsNoTracking();
 
-            //return await groups.ToListAsync();
-            return await _context.Groups.ToListAsync();
+            return await groups.ToListAsync();
+            //return await _context.Groups.ToListAsync();
         }
 
         // GET: api/Groups/5
