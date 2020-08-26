@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { StudentService } from '../services/student/student.service';
-import { Student } from './student';
+import { Student, Gender } from './student';
 
 @Component({
   selector: 'app-student',
@@ -15,7 +15,6 @@ export class StudentComponent implements OnInit {
   tableMode: boolean = true; 
 
   constructor(private studentService: StudentService) {
-
   }
   ngOnInit(): void {
     this.load();

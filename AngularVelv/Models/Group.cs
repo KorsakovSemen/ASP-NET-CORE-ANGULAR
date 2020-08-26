@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using VelvAPI.Models;
 
 namespace VelvAPI.Models
 {

@@ -1,7 +1,6 @@
 <h1 id="tableLabel">Groups</h1>
 
 
-<p *ngIf="!Groups"><em>Loading...</em></p>
 
 <input type="button" value="Добавить" class="btn btn-success mb-2" (click)="add()" />
 
@@ -9,6 +8,7 @@
 <table *ngIf="tableMode; else create" class='table table-striped' aria-labelledby="tableLabel">
   <thead>
     <tr>
+      <th>ID</th>
       <th>Group name</th>
       <th>Students</th>
     </tr>
@@ -16,8 +16,9 @@
   <tbody>
     <tr *ngFor="let g of Groups">
       <ng-template [ngIf]="group?.id != g.id" [ngIfElse]="edit">
+        <td>{{g.id}}</td>
         <td>{{ g.name }}</td>
-        <td>{{g.studentGroups}}</td>
+        <td>{{g.studentGroups.studentId}}</td>
         <td>
           <button class="btn btn-sm btn-danger mr-2" (click)="delete(g)">Remove</button>
           <button class="btn btn-sm btn-warning mr-2" (click)="editGroup(g)">Edit</button>
@@ -26,6 +27,9 @@
     </tr>
   </tbody>
 </table>
+
+<p *ngIf="!Groups"><em>Loading...</em></p>
+
 
 <ng-template #edit>
   <td>
@@ -37,9 +41,8 @@
         Group name is required.
       </div>
       <div *ngIf="name.errors.maxlength">
-        Group name cannot be longer than 40 characters
+        Group name cannot be longer than 25 characters
       </div>
-
     </div>
   </td>
   <td>
@@ -51,7 +54,7 @@
 <!--шаблон для добавления-->
 <ng-template #create>
   <div class="form-group">
-    <label>First name</label>
+    <label>Group name</label>
     <input id="name" name="name" class="form-control"
            required maxlength="40" [(ngModel)]="group.name" #name="ngModel" />
     <div *ngIf="name.invalid && (name.dirty || name.touched)"

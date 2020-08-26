@@ -22,12 +22,22 @@ export class StudentService {
   }
 
   createStudent(student: Student) {
+    this.checkGender(student);
     return this.http.post(this.url, student);
   }
   updateStudent(id: number, student: Student) {
+    this.checkGender(student);
     return this.http.put(this.url + '/' + id, student);
   }
   deleteStudent(id: number) {
     return this.http.delete(this.url + '/' + id);
+  }
+  checkGender(student: Student) {
+    if (student.stringGender == 'M') {
+      student.gender = 0;
+    }
+    else if (student.stringGender == 'F') {
+      student.gender = 1;
+    }
   }
 }
