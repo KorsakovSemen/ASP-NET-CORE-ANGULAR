@@ -16,6 +16,10 @@ namespace VelvAPI.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Student>(entity => {
+                    entity.HasIndex(s => s.NickName).IsUnique();
+            });
+
             modelBuilder.Entity<StudentGroup>()
                 .HasKey(t => new { t.StudentId, t.GroupId });
 

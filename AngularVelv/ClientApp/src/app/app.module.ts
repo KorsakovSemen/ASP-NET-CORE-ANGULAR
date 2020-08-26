@@ -27,7 +27,8 @@ import { StudentGroupComponent } from './student-group/student-group.component';
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'students', component: StudentComponent },
-      { path: 'groups', component: GroupComponent }
+      { path: 'groups', component: GroupComponent },
+      { path: 'studentgroups', component: StudentGroupComponent }
     ])
   ],
   providers: [],
