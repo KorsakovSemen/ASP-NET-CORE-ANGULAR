@@ -16,9 +16,9 @@
   <tbody>
     <tr *ngFor="let g of Groups">
       <ng-template [ngIf]="group?.id != g.id" [ngIfElse]="edit">
-        <td>{{g.id}}</td>
+        <td>{{ g.id }}</td>
         <td>{{ g.name }}</td>
-        <td>{{g.studentGroups.studentId}}</td>
+        <td>{{ g.studentGroups }}</td>
         <td>
           <button class="btn btn-sm btn-danger mr-2" (click)="delete(g)">Remove</button>
           <button class="btn btn-sm btn-warning mr-2" (click)="editGroup(g)">Edit</button>
@@ -32,6 +32,7 @@
 
 
 <ng-template #edit>
+  <td></td>
   <td>
     <input id="name" name="name" class="form-control"
            required maxlength="40" [(ngModel)]="group.name" #name="ngModel" />
@@ -45,6 +46,7 @@
       </div>
     </div>
   </td>
+  <td></td>
   <td>
     <input type="button" value="Сохранить" (click)="save()" class="btn btn-sm btn-success" />
     <input type="button" value="Отмена" (click)="cancel()" class="btn btn-sm btn-warning" />
