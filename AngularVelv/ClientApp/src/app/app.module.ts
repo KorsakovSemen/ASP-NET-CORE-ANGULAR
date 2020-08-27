@@ -9,7 +9,7 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
 import { StudentComponent } from './student/student.component';
 import { GroupComponent } from './group/group.component';
-import { StudentGroupComponent } from './student-group/student-group.component';
+import { StudentgroupComponent } from './studentgroup/studentgroup.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +18,7 @@ import { StudentGroupComponent } from './student-group/student-group.component';
     HomeComponent,
     StudentComponent,
     GroupComponent,
-    StudentGroupComponent
+    StudentgroupComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -28,7 +28,7 @@ import { StudentGroupComponent } from './student-group/student-group.component';
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'students', component: StudentComponent },
       { path: 'groups', component: GroupComponent },
-      { path: 'studentgroups', component: StudentGroupComponent }
+      { path: 'studentgroups', component: StudentgroupComponent }
     ])
   ],
   providers: [],
