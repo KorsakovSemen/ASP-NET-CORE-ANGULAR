@@ -21,9 +21,11 @@ export class StudentGroupComponent implements OnInit {
 
   load() {
     this.studentGroupService.getStudentGroups().subscribe((data: StudentGroup[]) => this.StudentGroups = data);
+    console.log(this.StudentGroups[0]);
   }
+
   save() {
-    if (this.studentGroup.groupId == null) {
+    if (this.studentGroup.groupId == null && this.studentGroup.studentId == null) {
       this.studentGroupService.createStudentGroup(this.studentGroup)
         .subscribe((data: StudentGroup) => this.StudentGroups.push(data));
     } else {

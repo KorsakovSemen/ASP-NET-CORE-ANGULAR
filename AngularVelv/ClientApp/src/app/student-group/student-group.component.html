@@ -8,34 +8,19 @@
   <thead>
     <tr>
       <th>ID</th>
-      <th>Student</th>
       <th>Group</th>
+      <th>Student</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let s of StudentGroup">
-      <ng-template [ngIf]="student?.id != s.id" [ngIfElse]="edit">
-        <td>{{ s.id }}</td>
-        <td>{{ s.firstName }}</td>
-        <td>{{ s.middleName }}</td>
-        <td>{{ s.lastName }}</td>
-        <td>{{ s.nickName }}</td>
+    <tr *ngFor="let sg of StudentGroup">
+      <ng-template [ngIf]="studentG?.id != sg.id" [ngIfElse]="edit">
+        <td>{{ sg.studentId }}</td>
+        <td>{{ sg.student.firstName }}</td>
+        <td>{{ sg.group.name }}</td>     
         <td>
-          <ng-template [ngIf]="s.gender == 1" [ngIfElse]="M">
-            F
-          </ng-template>
-          <ng-template #M>
-            M
-          </ng-template>
-        </td>
-        <td>
-          <ul class="list-group" *ngFor="let g of s.studentGroups">
-            {{g.group.name}}
-          </ul>
-        </td>
-        <td>
-          <button class="btn btn-sm btn-danger mr-2" (click)="delete(s)">Remove</button>
-          <button class="btn btn-sm btn-warning mr-2" (click)="editStudent(s)">Edit</button>
+          <button class="btn btn-sm btn-danger mr-2" (click)="delete(sg)">Remove</button>
+          <button class="btn btn-sm btn-warning mr-2" (click)="editStudent(sg)">Edit</button>
         </td>
       </ng-template>
     </tr>
@@ -49,7 +34,7 @@
   <td></td>
   <td>
     <input id="firstname" name="firstname" class="form-control"
-           required maxlength="60" [(ngModel)]="student.firstName" #firstname="ngModel" />
+           required maxlength="60" [(ngModel)]="studentG.firstName" #firstname="ngModel" />
     <div *ngIf="firstname.invalid && (firstname.dirty || firstname.touched)"
          class="alert alert-danger">
       <div *ngIf="firstname.errors.required">
@@ -59,7 +44,7 @@
   </td>
   <td>
     <input id="middlename" name="middlename" class="form-control"
-           required maxlength="60" [(ngModel)]="student.middleName" #middlename="ngModel" />
+           required maxlength="60" [(ngModel)]="studentG.middleName" #middlename="ngModel" />
     <div *ngIf="middlename.invalid && (middlename.dirty || middlename.touched)"
          class="alert alert-danger">
       <div *ngIf="middlename.errors.required">
@@ -69,7 +54,7 @@
   </td>
   <td>
     <input id="lastname" name="lastname" class="form-control"
-           required maxlength="60" [(ngModel)]="student.lastName" #lastname="ngModel" />
+           required maxlength="60" [(ngModel)]="studentG.lastName" #lastname="ngModel" />
     <div *ngIf="lastname.invalid && (lastname.dirty || lastname.touched)"
          class="alert alert-danger">
       <div *ngIf="lastname.errors.required">
@@ -79,7 +64,7 @@
   </td>
   <td>
     <input id="name" name="name" class="form-control"
-           required minlength="6" maxlength="40" [(ngModel)]="student.nickName" #name="ngModel" />
+           required minlength="6" maxlength="40" [(ngModel)]="studentG.nickName" #name="ngModel" />
     <div *ngIf="name.invalid && (name.dirty || name.touched)"
          class="alert alert-danger">
       <div *ngIf="name.errors.required">
@@ -94,7 +79,7 @@
     </div>
   </td>
   <td>
-    <input type="text" [(ngModel)]="student.stringGender" class="form-control" required maxlength="1" #gender="ngModel" id="gender" name="gender" />
+    <input type="text" [(ngModel)]="studentG.stringGender" class="form-control" required maxlength="1" #gender="ngModel" id="gender" name="gender" />
     <div *ngIf="gender.invalid && (gender.dirty || gender.touched)"
          class="alert alert-danger">
       <div *ngIf="gender.errors.required">
@@ -118,7 +103,7 @@
   <div class="form-group">
     <label>First name</label>
     <input id="firstname" name="firstname" class="form-control"
-           required maxlength="60" [(ngModel)]="student.firstName" #firstname="ngModel" />
+           required maxlength="60" [(ngModel)]="studentG.firstName" #firstname="ngModel" />
     <div *ngIf="firstname.invalid && (firstname.dirty || firstname.touched)"
          class="alert alert-danger">
       <div *ngIf="firstname.errors.required">
@@ -127,7 +112,7 @@
     </div>
     <label>Middle name</label>
     <input id="middlename" name="middlename" class="form-control"
-           required maxlength="60" [(ngModel)]="student.middleName" #middlename="ngModel" />
+           required maxlength="60" [(ngModel)]="studentG.middleName" #middlename="ngModel" />
     <div *ngIf="middlename.invalid && (middlename.dirty || middlename.touched)"
          class="alert alert-danger">
       <div *ngIf="middlename.errors.required">
@@ -136,7 +121,7 @@
     </div>
     <label>Last name</label>
     <input id="lastname" name="lastname" class="form-control"
-           required maxlength="60" [(ngModel)]="student.lastName" #lastname="ngModel" />
+           required maxlength="60" [(ngModel)]="studentG.lastName" #lastname="ngModel" />
     <div *ngIf="lastname.invalid && (lastname.dirty || lastname.touched)"
          class="alert alert-danger">
       <div *ngIf="lastname.errors.required">
@@ -145,7 +130,7 @@
     </div>
     <label>Nickname</label>
     <input id="name" name="name" class="form-control"
-           required minlength="6" maxlength="40" [(ngModel)]="student.nickName" #name="ngModel" />
+           required minlength="6" maxlength="40" [(ngModel)]="studentG.nickName" #name="ngModel" />
     <div *ngIf="name.invalid && (name.dirty || name.touched)"
          class="alert alert-danger">
       <div *ngIf="name.errors.required">
@@ -159,7 +144,7 @@
       </div>
     </div>
     <label>Gender (F or M)</label>
-    <input type="text" [(ngModel)]="student.stringGender" class="form-control"
+    <input type="text" [(ngModel)]="studentG.stringGender" class="form-control"
            required maxlength="1" #gender="ngModel" id="gender" name="gender" />
     <div *ngIf="gender.invalid && (gender.dirty || gender.touched)"
          class="alert alert-danger">

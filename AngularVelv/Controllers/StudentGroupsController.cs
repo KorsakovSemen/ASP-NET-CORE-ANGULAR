@@ -29,6 +29,7 @@ namespace AngularVelv.Controllers
                 .AsNoTracking();
 
             return await studentGroups.ToListAsync();
+
         }
 
         // GET: api/StudentGroups/5

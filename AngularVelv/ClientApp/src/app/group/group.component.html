@@ -27,7 +27,7 @@
         </td>
         <td>
           <button class="btn btn-sm btn-danger mr-2" (click)="delete(g)">Remove</button>
-          <button class="btn btn-sm btn-warning mr-2" (click)="editGroup(g)">Edit</button>
+          <button class="btn btn-sm btn-warning mr-2" (click)="editGroup(g, g.id)">Edit</button>
           <a [routerLink]="['/studentgroups']">
             <button class="btn btn-sm btn-primary">Change students</button>
           </a>
@@ -55,6 +55,9 @@
       </div>
     </div>
   </td>
+  <td>
+    {{group.id}}
+  </td>
   <td></td>
   <td>
     <input type="button" value="Сохранить" (click)="save()" class="btn btn-sm btn-success mr-2" />
@@ -62,7 +65,7 @@
   </td>
 </ng-template>
 
-<!--шаблон для добавления-->
+
 <ng-template #create>
   <div class="form-group">
     <label>Group name</label>
