@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Student } from '../../student/student';
+import { StudentGroup } from '../../student-group/student-group';
 
 @Injectable({
   providedIn: 'root'
 })
 
-export class StudentService {
+export class StudentGroupService {
 
-  private url = "/api/students";
+  private url = "api/studentgroups";
 
   constructor(private http: HttpClient) {
   }
@@ -21,23 +21,16 @@ export class StudentService {
     return this.http.get(this.url + '/' + id);
   }
 
-  createStudent(student: Student) {
-    this.checkGender(student);
+  createStudent(student: StudentGroup) {
     return this.http.post(this.url, student);
   }
-  updateStudent(id: number, student: Student) {
-    this.checkGender(student);
+
+  updateStudent(id: number, student: StudentGroup) {
     return this.http.put(this.url + '/' + id, student);
   }
+
   deleteStudent(id: number) {
     return this.http.delete(this.url + '/' + id);
   }
-  checkGender(student: Student) {
-    if (student.stringGender == 'M') {
-      student.gender = 0;
-    }
-    else if (student.stringGender == 'F') {
-      student.gender = 1;
-    }
-  }
+
 }

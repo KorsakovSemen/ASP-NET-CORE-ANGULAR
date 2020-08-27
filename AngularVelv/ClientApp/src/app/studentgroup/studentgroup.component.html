@@ -1,1 +1,28 @@
-<p>studentgroup works!</p>
+<h1 id="tableLabel">Change students in groups</h1>
+
+
+
+  <table *ngIf="tableMode; else create" class='table table-striped' aria-labelledby="tableLabel">
+    <thead>
+      <tr>
+        <th>Student</th>
+        <th>Group</th>
+        <th>Settings</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let s of studentGroups">
+        <td>{{ s.groupId }}</td>
+        <td>{{ s.studentId }}</td>
+        <td>
+          <button class="btn btn-sm btn-success mr-2" (click)="save()">Save</button>
+          <button class="btn btn-sm btn-danger mr-2" (click)="delete(s)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <p *ngIf="!studentGroups"><em>Loading...</em></p>
+
+

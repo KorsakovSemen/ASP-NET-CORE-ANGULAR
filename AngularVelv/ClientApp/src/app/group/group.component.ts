@@ -34,15 +34,15 @@ export class GroupComponent implements OnInit {
     }
     this.cancel();
   }
-  editGroup(s: Group) {
-    this.group = s;
+  editGroup(g: Group) {
+    this.group = g;
   }
   cancel() {
     this.group = new Group();
     this.tableMode = true;
   }
-  delete(s: Group) {
-    this.groupService.deleteGroup(s.id)
+  delete(g: Group) {
+    this.groupService.deleteGroup(g.id)
       .subscribe(data => this.load());
   }
   add() {

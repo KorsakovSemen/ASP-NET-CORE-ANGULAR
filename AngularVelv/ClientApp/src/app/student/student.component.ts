@@ -22,6 +22,7 @@ export class StudentComponent implements OnInit {
 
   load() {
     this.studentService.getStudents().subscribe((data: Student[]) => this.Students = data);
+    console.log(this.Students);
   }
   save() {
     if (this.student.id == null) {
