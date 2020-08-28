@@ -9,7 +9,7 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
 import { StudentComponent } from './student/student.component';
 import { GroupComponent } from './group/group.component';
-import { StudentgroupComponent } from './studentgroup/studentgroup.component';
+import { StudentgroupComponent } from './student-group/student-group.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from '../shared/material-module';
 

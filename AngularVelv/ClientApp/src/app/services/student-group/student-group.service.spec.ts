@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import { StudentGroupService } from './studentgroup.service';
+import { StudentGroupService } from './student-group.service';
 
 
 describe('StudentgroupService', () => {

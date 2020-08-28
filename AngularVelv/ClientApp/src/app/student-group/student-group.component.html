@@ -1,0 +1,59 @@
+<h1 id="tableLabel">Change students in groups</h1>
+
+<input type="button" value="Add" class="btn btn-success mb-2" (click)="add()" />
+
+<form *ngFor="let sg of studentGroups">
+  <mat-form-field appearance="fill">
+    <mat-label>{{sg.student.firstName}}, {{sg.student.lastName}}</mat-label>
+    <mat-select [(ngModel)]="studentGroup.studentId">
+      <mat-option *ngFor="let sg of studentGroups" [value]="sg.studentId">
+        {{sg.student.firstName}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>{{sg.group.name}}</mat-label>
+    <mat-select [(ngModel)]="studentGroup.groupId">
+      <mat-option *ngFor="let sg of studentGroups" [value]="sg.groupId">
+        {{sg.group.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <input type="button" value="Сохранить" (click)="save()" class="btn btn-success mr-2" />
+  <button class="btn btn-sm btn-danger mr-2" (click)="delete(sg)">Remove</button>
+</form>
+
+
+<ng-template *ngIf="tableMode; else create">
+
+</ng-template>
+
+
+<ng-template #create>
+  <form>
+    <mat-form-field appearance="fill">
+      <mat-label>Student</mat-label>
+      <mat-select [(ngModel)]="studentGroup.studentId" name="nameadd">
+        <mat-option *ngFor="let s of students" [value]="s.id">
+          {{s.firstName}}, {{s.lastName}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Group</mat-label>
+      <mat-select [(ngModel)]="studentGroup.groupId" name="groupadd">
+        <mat-option *ngFor="let sg of groups" [value]="sg.id">
+          {{sg.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+  <div>
+    <input type="button" value="Save" (click)="save()" class="btn btn-success mr-2" />
+    <input type="button" value="Cancel" (click)="cancel()" class="btn btn-warning mr-2" />
+  </div>
+</ng-template>
+
+<p *ngIf="!studentGroups"><em>Loading...</em></p>
+
+

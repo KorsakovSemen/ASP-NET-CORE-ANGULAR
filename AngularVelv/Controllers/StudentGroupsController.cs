@@ -106,7 +106,7 @@ namespace AngularVelv.Controllers
 
         // DELETE: api/StudentGroups/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<StudentGroup>> DeleteStudentGroup(long id)
+        public async Task<ActionResult<StudentGroup>> DeleteStudentGroup(long studentId, long groupId)
         {
             var studentGroup = await _context.StudentGroups.FindAsync(id);
             if (studentGroup == null)
