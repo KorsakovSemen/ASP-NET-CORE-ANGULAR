@@ -49,7 +49,7 @@ export class StudentgroupComponent implements OnInit {
     this.tableMode = true;
   }
   delete(s: StudentGroup) {
-    this.studentGroupService.deleteStudent(s.studentId)
+    this.studentGroupService.deleteStudent(s.studentId, s.groupId)
       .subscribe(data => this.load());
   }
   add() {

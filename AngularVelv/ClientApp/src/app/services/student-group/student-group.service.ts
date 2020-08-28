@@ -29,8 +29,8 @@ export class StudentGroupService {
     return this.http.put(this.url + '/' + id, student);
   }
 
-  deleteStudent(id: number) {
-    return this.http.delete(this.url + '/' + id);
+  deleteStudent(studentId: number, groupId: number) {
+    return this.http.delete(this.url + '/' + studentId + '/' + groupId);
   }
 
 }
