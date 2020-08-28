@@ -12,6 +12,7 @@ import { MaterialModule } from '../shared/material-module';
 import { StudentComponent } from './components/student/student.component';
 import { GroupComponent } from './components/group/group.component';
 import { StudentgroupComponent } from './components/student-group/student-group.component';
+import { FilterPipe } from './filter.pipe';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { StudentgroupComponent } from './components/student-group/student-group.
     HomeComponent,
     StudentComponent,
     GroupComponent,
-    StudentgroupComponent
+    StudentgroupComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
