@@ -15,7 +15,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let g of Groups">
+    <tr *ngFor="let g of groups">
       <ng-template [ngIf]="group?.id != g.id" [ngIfElse]="edit">
         <td>{{ g.id }}</td>
         <td>{{ g.name }}</td>
@@ -37,7 +37,7 @@
   </tbody>
 </table>
 
-<p *ngIf="!Groups"><em>Loading...</em></p>
+<p *ngIf="!groups"><em>Loading...</em></p>
 
 
 <ng-template #edit>

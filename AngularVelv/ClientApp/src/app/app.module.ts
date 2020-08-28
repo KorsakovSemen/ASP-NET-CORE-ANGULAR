@@ -7,11 +7,11 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
-import { StudentComponent } from './student/student.component';
-import { GroupComponent } from './group/group.component';
-import { StudentgroupComponent } from './student-group/student-group.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from '../shared/material-module';
+import { StudentComponent } from './components/student/student.component';
+import { GroupComponent } from './components/group/group.component';
+import { StudentgroupComponent } from './components/student-group/student-group.component';
 
 @NgModule({
   declarations: [

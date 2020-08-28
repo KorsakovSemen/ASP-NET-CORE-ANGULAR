@@ -17,7 +17,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let s of Students">
+    <tr *ngFor="let s of students">
       <ng-template [ngIf]="student?.id != s.id" [ngIfElse]="edit">
         <td>{{ s.id }}</td>
         <td>{{ s.firstName }}</td>
@@ -50,7 +50,7 @@
                [pageSizeOptions]="[5, 10, 25, 100]">
 </mat-paginator>
 
-<p *ngIf="!Students"><em>Loading...</em></p>
+<p *ngIf="!students"><em>Loading...</em></p>
 
 <ng-template #edit>
   <td></td>

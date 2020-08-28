@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { StudentService } from '../services/student/student.service';
 import { Student, Gender } from './student';
+import { StudentService } from '../../services/student/student.service';
 
 @Component({
   selector: 'app-student',
@@ -11,7 +11,7 @@ import { Student, Gender } from './student';
 export class StudentComponent implements OnInit {
 
   student: Student = new Student();
-  public Students: Student[];
+  public students: Student[];
   tableMode: boolean = true; 
 
   constructor(private studentService: StudentService) {
@@ -21,13 +21,12 @@ export class StudentComponent implements OnInit {
   }
 
   load() {
-    this.studentService.getStudents().subscribe((data: Student[]) => this.Students = data);
-    console.log(this.Students);
+    this.studentService.getStudents().subscribe((data: Student[]) => this.students = data);
   }
   save() {
     if (this.student.id == null) {
       this.studentService.createStudent(this.student)
-        .subscribe((data: Student) => this.Students.push(data));
+        .subscribe((data: Student) => this.students.push(data));
     } else {
       this.studentService.updateStudent(this.student.id, this.student)
         .subscribe(data => this.load());

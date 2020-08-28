@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { StudentGroup } from './student-group';
-import { StudentGroupService } from '../services/student-group/student-group.service';
 import { Student } from '../student/student';
-import { StudentService } from '../services/student/student.service';
-import { GroupService } from '../services/group/group.service';
 import { Group } from '../group/group';
+import { StudentService } from '../../services/student/student.service';
+import { StudentGroupService } from '../../services/student-group/student-group.service';
+import { GroupService } from '../../services/group/group.service';
 
 @Component({
   selector: 'app-student-group',
