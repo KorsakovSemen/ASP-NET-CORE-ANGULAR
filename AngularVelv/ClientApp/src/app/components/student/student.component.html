@@ -1,8 +1,7 @@
 <h1 id="tableLabel">Students</h1>
 
 
-<input type="button" value="Добавить" class="btn btn-success mb-2" (click)="add()" />
-
+<button mat-flat-button color="primary" class="btn mb-2 mr-2" (click)="add()">Add</button>
 
 <table *ngIf="tableMode; else create" class='table table-striped' aria-labelledby="tableLabel">
   <thead>
@@ -39,8 +38,8 @@
           </ul>
         </td>
         <td>
-          <button class="btn btn-sm btn-danger mr-2" (click)="delete(s)">Remove</button>
-          <button class="btn btn-sm btn-warning mr-2" (click)="editStudent(s)">Edit</button>
+          <button mat-flat-button color="warn" class="btn btn-sm mr-2" (click)="delete(s)">Remove</button>
+          <button mat-flat-button color="accent" class="btn btn-sm btn-warning mr-2" (click)="editStudent(s)">Edit</button>
         </td>
       </ng-template>
     </tr>
@@ -115,8 +114,8 @@
   </td>
   <td></td>
   <td>
-    <input type="button" value="Сохранить" (click)="save()" class="btn btn-sm btn-success mr-2" />
-    <input type="button" value="Отмена" (click)="cancel()" class="btn btn-sm btn-warning mr-2" />
+    <input mat-flat-button type="button" value="Save" (click)="save()" class="btn btn-sm btn-success mr-2" />
+    <input mat-flat-button type="button" value="Cancel" (click)="cancel()" class="btn btn-sm btn-warning mr-2" />
   </td>
 </ng-template>
 
@@ -180,7 +179,7 @@
     </div>
   </div>
   <div>
-    <input type="button" value="Сохранить" (click)="save()" class="btn btn-success mr-2" />
-    <input type="button" value="Отмена" (click)="cancel()" class="btn btn-warning mr-2" />
+    <input mat-flat-button type="button" value="Save" (click)="save()" class="btn btn-sm btn-success mr-2" />
+    <input mat-flat-button type="button" value="Cancel" (click)="cancel()" class="btn btn-sm btn-warning mr-2" />
   </div>
 </ng-template>
